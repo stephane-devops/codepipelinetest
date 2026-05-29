@@ -10,7 +10,7 @@ export class CodepipelinetestPipelineStack extends cdk.Stack {
     const githubRepo = this.node.tryGetContext('github_repo') || assert.fail('github_repo context must be provided');
 
     new CodePipeline(this, 'Pipeline', {
-      pipelineName: 'MyPipeline',
+      pipelineName: 'githubtest',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub(githubRepo, 'main'),
         commands: ['npm ci', 'npm run build', 'npx cdk synth'],
